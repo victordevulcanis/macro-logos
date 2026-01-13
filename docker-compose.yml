@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine  # Versão leve (Alpine) do Postgres
+    container_name: macrologos-db
+    ports:
+      - "5432:5432"  # Mapeia porta local : porta do container
+    environment:
+      - POSTGRES_USER=macro_user      # Usuário do banco
+      - POSTGRES_PASSWORD=macro_pass  # Senha (apenas para DEV local!)
+      - POSTGRES_DB=macrologos_db     # Nome do banco de dados
+    volumes:
+      - postgres-data:/var/lib/postgresql/data # Persistência dos dados
+    restart: always
+
+volumes:
+  postgres-data: # Define o volume gerenciado pelo Docker
