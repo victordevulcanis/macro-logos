@@ -5,14 +5,14 @@ public enum BiologicalSex {
     MALE(5),
     FEMALE(-161);
 
-    private final int adjustNumber;
+    private final int basalAdjustment;
 
    BiologicalSex(int basalAdjustment){
-       this.adjustNumber = basalAdjustment;
+       this.basalAdjustment = basalAdjustment;
    }
 
-   public int getAdjustNumber() {
-       return adjustNumber;
+   public int getBasalAdjustment() {
+       return basalAdjustment;
    }
 
 }

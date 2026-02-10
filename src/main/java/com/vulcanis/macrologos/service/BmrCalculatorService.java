@@ -21,7 +21,7 @@ public class BmrCalculatorService {
         // Basal Metabolic Rate = (10 * weight in kg) + (6.25 * height in cm) - (5 * age in years) + gender adjustment
         LocalDate today = LocalDate.now(clock);
         Integer age = user.getAge(today);
-        return (10 * user.getWeight()) + (6.25 * user.getHeight()) - (5 * age) + user.getBiologicalSex().getAdjustNumber();
+        return (10 * user.getWeight()) + (6.25 * user.getHeight()) - (5 * age) + user.getBiologicalSex().getBasalAdjustment();
     }
 
     public double calculateTdee(User user) {
