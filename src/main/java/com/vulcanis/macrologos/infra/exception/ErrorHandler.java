@@ -13,15 +13,15 @@ import java.util.List;
 public class ErrorHandler {
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity handle400(MethodArgumentNotValidException ex) {
-        var errors = ex.getFieldErrors().stream()
+    public ResponseEntity handleValidationErrors(MethodArgumentNotValidException ex) {
+        List<ValidationErrorData> errors = ex.getFieldErrors().stream()
                 .map(ValidationErrorData::new)
                 .toList();
         return ResponseEntity.badRequest().body(errors);
     }
 
     @ExceptionHandler(HttpMessageNotReadableException.class)
-    public ResponseEntity handle400Readable(HttpMessageNotReadableException ex) {
+    public ResponseEntity handleMalformedJson(HttpMessageNotReadableException ex) {
         return ResponseEntity.badRequest().body(new ErrorMessageData(ex.getMessage()));
     }
 
@@ -31,5 +31,7 @@ public class ErrorHandler {
         }
     }
 
-    private record ErrorMessageData(String message) {}
+    private record ErrorMessageData(String message) {
+
+    }
 }

@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 
 import java.time.Clock;
 import java.time.LocalDate;
-import java.time.Period;
 
 @Service
 public class BmrCalculatorService {
